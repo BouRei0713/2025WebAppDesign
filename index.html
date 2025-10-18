@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대학생 밥 메뉴 조사</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>대학생 밥 메뉴 조사</h1>
+            <p>여러분의 식사 선택을 알려주세요!</p>
+        </header>
+        <main>
+            <form id="survey-form">
+                <!-- 학년 -->
+                <div class="form-group">
+                    <label>학년</label>
+                    <div class="radio-group">
+                        <input type="radio" id="grade1" name="grade" value="1학년" required>
+                        <label for="grade1">1학년</label>
+                        <input type="radio" id="grade2" name="grade" value="2학년">
+                        <label for="grade2">2학년</label>
+                        <input type="radio" id="grade3" name="grade" value="3학년">
+                        <label for="grade3">3학년</label>
+                        <input type="radio" id="grade4" name="grade" value="4학년">
+                        <label for="grade4">4학년</label>
+                        <input type="radio" id="grad" name="grade" value="대학원생">
+                        <label for="grad">대학원생</label>
+                    </div>
+                </div>
+
+                <!-- 메뉴 선택 -->
+                <div class="form-group">
+                    <label>메뉴 선택</label>
+                    <div class="radio-group">
+                        <input type="radio" id="menu-korean" name="menu" value="한식" required>
+                        <label for="menu-korean">한식</label>
+                        <input type="radio" id="menu-chinese" name="menu" value="중식">
+                        <label for="menu-chinese">중식</label>
+                        <input type="radio" id="menu-japanese" name="menu" value="일식">
+                        <label for="menu-japanese">일식</label>
+                        <input type="radio" id="menu-western" name="menu" value="양식">
+                        <label for="menu-western">양식</label>
+                        <input type="radio" id="menu-simple" name="menu" value="간편식">
+                        <label for="menu-simple">간편식</label>
+                        <input type="radio" id="menu-fast" name="menu" value="패스트푸드">
+                        <label for="menu-fast">패스트푸드</label>
+                        <input type="radio" id="menu-snack" name="menu" value="분식">
+                        <label for="menu-snack">분식</label>
+                        <input type="radio" id="menu-etc" name="menu" value="기타">
+                        <label for="menu-etc">기타</label>
+                    </div>
+                </div>
+
+                <!-- 예산 -->
+                <div class="form-group">
+                    <label>예산</label>
+                    <div class="radio-group">
+                        <input type="radio" id="budget1" name="budget" value="5000원 미만" required>
+                        <label for="budget1">5000원 미만</label>
+                        <input type="radio" id="budget2" name="budget" value="5000~10000원">
+                        <label for="budget2">5000~10000원</label>
+                        <input type="radio" id="budget3" name="budget" value="10000원~15000원">
+                        <label for="budget3">10000원~15000원</label>
+                        <input type="radio" id="budget4" name="budget" value="15000원 초과">
+                        <label for="budget4">15000원 초과</label>
+                    </div>
+                </div>
+
+                <!-- 메뉴 선정 이유 -->
+                <div class="form-group">
+                    <label for="reason">메뉴 선정 이유</label>
+                    <textarea id="reason" name="reason" rows="4" placeholder="이 메뉴를 선택한 이유를 적어주세요." required></textarea>
+                </div>
+
+                <!-- 만족도 -->
+                <div class="form-group">
+                    <label>만족도</label>
+                    <div class="radio-group">
+                        <input type="radio" id="satisfaction1" name="satisfaction" value="매우만족" required>
+                        <label for="satisfaction1">매우만족</label>
+                        <input type="radio" id="satisfaction2" name="satisfaction" value="만족">
+                        <label for="satisfaction2">만족</label>
+                        <input type="radio" id="satisfaction3" name="satisfaction" value="보통">
+                        <label for="satisfaction3">보통</label>
+                        <input type="radio" id="satisfaction4" name="satisfaction" value="불만족">
+                        <label for="satisfaction4">불만족</label>
+                        <input type="radio" id="satisfaction5" name="satisfaction" value="다시는안먹음">
+                        <label for="satisfaction5">다시는안먹음</label>
+                    </div>
+                </div>
+
+                <button type="submit">제출하기</button>
+            </form>
+
+            <section class="records-section">
+                <div class="section-header">
+                    <h2>응답 목록</h2>
+                    <button id="export-excel">엑셀로 내보내기</button>
+                </div>
+                <div class="records-list-container">
+                    <div class="records-header">
+                        <div>학년</div>
+                        <div>메뉴</div>
+                        <div>예산</div>
+                        <div>이유</div>
+                        <div>만족도</div>
+                    </div>
+                    <div id="records-container">
+                        <!-- 응답 데이터가 여기에 동적으로 추가됩니다. -->
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2025 대학생 밥 메뉴 조사. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

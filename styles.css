@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #fffaf5; /* 아이보리+살구 배경 */
+  color: #4a4a4a;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 720px;
+  margin: 60px auto;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(255, 200, 160, 0.3);
+  padding: 50px 60px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff8b60; /* 따뜻한 살구색 포인트 */
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #888;
+  font-size: 1rem;
+}
+
+form .form-group {
+  margin-bottom: 28px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.radio-group input[type="radio"] {
+  display: none;
+}
+
+.radio-group label {
+  padding: 8px 16px;
+  border: 1.5px solid #ffd9c0;
+  border-radius: 12px;
+  background: #fff7f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #555;
+}
+
+.radio-group input[type="radio"]:checked + label {
+  background: #a3e4d7; /* 파스텔 민트 */
+  color: #fff;
+  border-color: #7ed6c3;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  border: 1.5px solid #ffd9c0;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  background: #fffaf5;
+}
+
+textarea:focus {
+  border-color: #7ed6c3;
+  outline: none;
+}
+
+button[type="submit"],
+#export-excel {
+  width: 100%;
+  background: #ffb68b;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.25s;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover,
+#export-excel:hover {
+  background: #ff9b68;
+}
+
+.records-section {
+  margin-top: 60px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.records-header,
+.record-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f2d7c9;
+}
+
+.records-header {
+  font-weight: bold;
+  color: #ff8b60;
+}
+
+.record-row:hover {
+  background: #fff8f3;
+  border-radius: 10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  color: #999;
+  font-size: 0.9rem;
+}
