@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwJd26Uf0Ksje0o79gLYNQHrCq207IPAcXvjgotjgxHzYYWlw0Br2kcY6dDrMre6zlW-w/exec';
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzGd8wntn9HiOPb75M-G2j39TNUEdUBYK99300jeCvKYvqbb209DkY5Lms4HHXAch8abw/exec'; // 배포된 웹 앱 URL로 변경하세요.
 
     const surveyForm = document.getElementById('survey-form');
     const recordsContainer = document.getElementById('records-container');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('데이터 형식이 올바르지 않습니다.');
             }
 
-            // 최신순 정렬
+            // 최신순 정렬 (Timestamp 필드를 사용)
             recordsCache.sort((a, b) => new Date(b.Timestamp) - new Date(a.Timestamp));
 
             recordsContainer.innerHTML = '';
@@ -62,15 +62,16 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             await fetch(WEB_APP_URL, {
                 method: 'POST',
-                mode: 'no-cors',
+                mode: 'no-cors', // CORS 정책 우회를 위해 'no-cors' 사용 (실제 요청은 잘 전송되나 응답 객체는 불투명해짐)
                 cache: 'no-cache',
                 redirect: 'follow',
                 body: JSON.stringify(data)
             });
 
+            // no-cors 모드에서는 응답을 직접 확인할 수 없으므로, 일단 성공으로 가정하고 처리
             alert('응답이 성공적으로 제출되었습니다!');
             surveyForm.reset();
-            loadRecords();
+            loadRecords(); // 데이터 제출 후 목록 새로고침
         } catch (error) {
             console.error('응답 제출 실패:', error);
             alert('제출 중 오류가 발생했습니다.');
@@ -87,7 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const worksheet = XLSX.utils.json_to_sheet(recordsCache);
+        // Timestamp는 Date 객체로 변환하여 보기 좋게 만듭니다.
+        const exportData = recordsCache.map(record => ({
+            ...record,
+            Timestamp: new Date(record.Timestamp).toLocaleString() // 현지 시간으로 변환
+        }));
+
+        const worksheet = XLSX.utils.json_to_sheet(exportData);
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "밥 메뉴 조사");
 
